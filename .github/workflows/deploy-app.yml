@@ -3,7 +3,7 @@ name: Deploy App
 on:
   # Dependency to a forking workflow
   workflow_run:
-    workflows: ["Docker"]
+    workflows: [Docker]
     types:
     - completed
     
