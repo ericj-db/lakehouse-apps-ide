@@ -1,0 +1,15 @@
+name: Android HMS Production
+
+on:
+  # Automatic trigger when pushing tags
+  # push:
+  #   branches:
+  #     - "!*"
+  #   tags:
+  #     - 'v*'
+
+  # Dependency to a forking workflow
+  workflow_run:
+    workflows: ["Docker"]
+    types:
+    - completed
