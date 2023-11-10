@@ -5,10 +5,10 @@ import uuid
 parser = argparse.ArgumentParser()
 parser.add_argument('--dry_run', default=True)
 parser.add_argument('--host', help='Databricks host to deploy app to', default='dbc-e2ec9f4b-f2a7.dev.databricks.com')
-parser.add_argument('--pat', help='Personal Access Token to use for deployment', default='dapidec49111d80a219f54f7a454a7949ce0')
+parser.add_argument('--pat', help='Personal Access Token to use for deployment', default='')
 # Can possibly get this directly from github workflow
 parser.add_argument('--access_key', help='Github access key to pass to Harbor', default='ericj-db')
-parser.add_argument('--access_secret', help='Github access secret to pass to Harbor', default='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')
+parser.add_argument('--access_secret', help='Github access secret to pass to Harbor', default='')
 
 args = parser.parse_args()
 
