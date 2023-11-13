@@ -1,0 +1,11 @@
+.App {
+  text-align: center;
+  margin-left: 2vw;
+  margin-right: 2vw;
+}
+
+.App-logo {
+  padding-top: 2vh;
+  height: 2vh;
+  pointer-events: none;
+}
