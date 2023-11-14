@@ -27,5 +27,5 @@ jobs:
       - name: execute py script # run deploy.py
         env:
           ACCESS_SECRET: ${{ secrets.ACCESS_SECRET }}
-        run: python deploy.py --access_secret $ACCESS_SECRET --dry-run False
+        run: python deploy.py --access_secret $ACCESS_SECRET --dry_run False
     
