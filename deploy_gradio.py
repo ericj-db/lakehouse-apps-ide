@@ -66,6 +66,12 @@ body = {
                   'container_port': 8050,
                   'protocol': 'TCP'
                 }
+              ],
+              'env': [
+                {
+                  'name': "GRADIO_SERVER_PORT",
+                  'value': 8050
+                }
               ]
             }
           ]
