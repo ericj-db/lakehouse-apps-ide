@@ -72,7 +72,7 @@ body = {
           'containers': [
             {
               'name': 'cluster-app',
-              'image': 'ghcr.io/ericj-db/cluster-app:latest',
+              'image': 'ghcr.io/ericj-db/lakehouse-apps-ide:main',
               'command': [
                 '/databricks/nginx/init.sh'
               ],
