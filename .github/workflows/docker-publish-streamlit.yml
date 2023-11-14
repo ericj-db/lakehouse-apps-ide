@@ -72,7 +72,7 @@ jobs:
         with:
           context: ./streamlit
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }},streamlit-app:latest
+          tags: ${{ steps.meta.outputs.tags }},ghcr.io/ericj-db/streamlit-app:latest
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
