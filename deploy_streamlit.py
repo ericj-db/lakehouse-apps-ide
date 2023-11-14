@@ -53,16 +53,13 @@ body = {
     },
     'services': [
       {
-        'name': 'cluster-app',
+        'name': 'streamlit-app',
         'template': {
           'workload_type': 'CPU',
           'containers': [
             {
-              'name': 'cluster-app',
+              'name': 'streamlit-app',
               'image': 'ghcr.io/ericj-db/streamlit-app:latest',
-              'command': [
-                'streamlit run streamlit_app.py --server.port 8050 --server.enableCORS false  --server.enableXsrfProtection false'
-              ],
               'ports': [
                 {
                   'name': 'app-http',
