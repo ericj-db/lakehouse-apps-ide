@@ -3,7 +3,7 @@ import argparse
 import uuid
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--dry_run', default=True)
+parser.add_argument('--dry_run', action='store_true')
 parser.add_argument('--host', help='Databricks host to deploy app to', default='dbc-e2ec9f4b-f2a7.dev.databricks.com')
 parser.add_argument('--pat', help='Personal Access Token to use for deployment', default='')
 # Can possibly get this directly from github workflow
@@ -13,6 +13,7 @@ parser.add_argument('--access_secret', help='Github access secret to pass to Har
 args = parser.parse_args()
 
 if args.dry_run:
+    print('Dry run, exiting...')
     exit(0)
 
 print('Not a dry run, continuing...')
