@@ -59,7 +59,7 @@ body = {
           'containers': [
             {
               'name': 'cluster-app',
-              'image': 'ghcr.io/ericj-db/lakehouse-apps-ide:main',
+              'image': 'ghcr.io/ericj-db/streamlit-app:latest',
               'command': [
                 'streamlit run streamlit_app.py --server.port 8050 --server.enableCORS false  --server.enableXsrfProtection false'
               ],

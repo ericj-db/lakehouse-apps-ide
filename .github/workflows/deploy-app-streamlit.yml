@@ -28,5 +28,5 @@ jobs:
         env:
           ACCESS_SECRET: ${{ secrets.ACCESS_SECRET }}
           DATABRICKS_PAT: ${{ secrets.DATABRICKS_PAT }}
-        run: python deploy.py --access_secret "$ACCESS_SECRET" --pat "$DATABRICKS_PAT"
+        run: python deploy_streamlit.py --access_secret "$ACCESS_SECRET" --pat "$DATABRICKS_PAT"
 
