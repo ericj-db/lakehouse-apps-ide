@@ -25,5 +25,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: execute py script # run deploy.py
-        run: python deploy.py
+        env:
+          ACCESS_SECRET: ${{ secrets.ACCESS_SECRET }}
+        run: python deploy.py --access_secret $ACCESS_SECRET --dry-run False
     
