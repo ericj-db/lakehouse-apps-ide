@@ -36,8 +36,8 @@ headers = {'Authorization': f'Bearer {args.pat}'}
 body = {
   'manifest': {
     'version': '1',
-    'name': f'streamlit-app-{app_id}',
-    'description': 'Streamlit App',
+    'name': f'gradio-app-{app_id}',
+    'description': 'Gradio App',
     'ingress': {
       'endpoints': [
         {
@@ -53,13 +53,13 @@ body = {
     },
     'services': [
       {
-        'name': 'streamlit-app',
+        'name': 'gradio-app',
         'template': {
           'workload_type': 'CPU',
           'containers': [
             {
-              'name': 'streamlit-app',
-              'image': 'ghcr.io/ericj-db/streamlit-app:latest',
+              'name': 'gradio-app',
+              'image': 'ghcr.io/ericj-db/gradio-app:latest',
               'ports': [
                 {
                   'name': 'app-http',
