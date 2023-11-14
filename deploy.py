@@ -15,6 +15,20 @@ args = parser.parse_args()
 if args.dry_run:
     exit(0)
 
+print('Not a dry run, continuing...')
+if args.pat == '':
+    print('No PAT provided, exiting...')
+    exit(1)
+else:
+    print('PAT provided, continuing...')
+
+if args.access_secret == '':
+    print('No access secret provided, exiting...')
+    exit(1)
+else:
+    print('Access secret provided, continuing...')
+
+
 app_id = uuid.uuid4().hex
 url = f'https://{args.host}/api/2.0/preview/apps/deployments'
 headers = {'Authorization': f'Bearer {args.pat}'}
