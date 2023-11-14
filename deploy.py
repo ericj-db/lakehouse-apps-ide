@@ -30,7 +30,7 @@ else:
     print('Access secret provided, continuing...')
 
 
-app_id = uuid.uuid4().hex
+app_id = uuid.uuid4().hex[:4]
 url = f'https://{args.host}/api/2.0/preview/apps/deployments'
 headers = {'Authorization': f'Bearer {args.pat}'}
 body = {
