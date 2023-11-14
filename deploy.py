@@ -15,22 +15,50 @@ args = parser.parse_args()
 if args.dry_run:
     exit(0)
 
-app_name = uuid.uuid4().hex
+app_id = uuid.uuid4().hex
 url = f'https://{args.host}/api/2.0/preview/apps/deployments'
 headers = {'Authorization': f'Bearer {args.pat}'}
 body = {
+  'resources': [
+    {
+      'name': 'spark-cluster',
+      'option': 'EXISTING',
+      'value': '1113-230645-ilkhmsih'
+    }
+  ],
   'manifest': {
     'version': '1',
-    'name': app_name,
-    'description': 'Amuseable Avocado',
+    'name': f'ide-app-{app_id}',
+    'description': 'Cluster App',
     'ingress': {
-        'endpoints': [
-            {
-                'port_name': 'app-http',
-                'visibility': 'EXTERNAL'
-            }
-        ]
+      'endpoints': [
+        {
+          'port_name': 'app-http',
+          'visibility': 'EXTERNAL'
+        }
+      ]
     },
+    'dependencies': [
+      {
+        'name': 'spark-cluster',
+        'description': 'Spark cluster to transform data',
+        'params': [
+          {
+            'key': 'runtime',
+            'value': '14.1 ML'
+          },
+          {
+            'key': 'worker type',
+            'value': 'i3.xlarge'
+          }
+        ],
+        'type': 'cluster',
+        'permissions': [
+          'CAN_MANAGE'
+        ],
+        'optional': False
+      }
+    ],
     'registry': {
       'url': 'https://ghcr.io',
       'access_key': args.access_key,
@@ -38,24 +66,27 @@ body = {
     },
     'services': [
       {
-        'name': 'amuseable-avocado',
+        'name': 'cluster-app',
         'template': {
           'workload_type': 'CPU',
           'containers': [
             {
-              'name': 'amuseable-avocado',
-              'image': 'ghcr.io/weishi-db/lakehouse-apps:avocado-app',
+              'name': 'cluster-app',
+              'image': 'ghcr.io/ericj-db/cluster-app:latest',
+              'command': [
+                '/databricks/nginx/init.sh'
+              ],
               'ports': [
                 {
                   'name': 'app-http',
-                  'container_port': 8030,
+                  'container_port': 8050,
                   'protocol': 'TCP'
                 }
               ],
               'env': [
                 {
-                  'name': 'MY_MESSAGE',
-                  'value': 'Ripe for a giggle!'
+                  'name': 'REACT_APP_CLUSTER_ID',
+                  'value_from': 'spark-cluster'
                 }
               ]
             }
@@ -66,8 +97,9 @@ body = {
   }
 }
 
+
 r = requests.post(url=url, headers=headers, json=body)
 
 print(r.status_code)
 print(r.json())
-print(f'App name: {app_name}')
+print(f'App name: {app_id}')
