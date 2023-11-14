@@ -116,5 +116,6 @@ body = {
 r = requests.post(url=url, headers=headers, json=body)
 
 print(r.status_code)
+print(r.content)
 print(r.json())
 print(f'App name: {app_id}')
