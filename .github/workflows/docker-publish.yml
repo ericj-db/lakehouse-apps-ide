@@ -63,7 +63,7 @@ jobs:
           cmd: build # will run `yarn build` command
 
       - name: Compress web folder to dist
-        run: tar cvf .web/build.tar ./web/dist
+        run: tar cvf ./web/build.tar ./web/dist
 
       # Set up BuildKit Docker container builder to be able to build
       # multi-platform images and export cache
