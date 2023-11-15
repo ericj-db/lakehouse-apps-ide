@@ -4,3 +4,6 @@ langchain
 uvicorn
 itsdangerous
 pyjwt
+dash
+plotly
+pandas
