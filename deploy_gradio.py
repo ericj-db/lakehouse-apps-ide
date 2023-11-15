@@ -62,7 +62,7 @@ body = {
           'containers': [
             {
               'name': 'gradio-app',
-              'image': 'ghcr.io/ericj-db/gradio-app:latest',
+              'image': f'ghcr.io/ericj-db/{args.app_name}:latest',
               'ports': [
                 {
                   'name': 'app-http',
