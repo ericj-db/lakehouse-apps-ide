@@ -7,6 +7,7 @@ name: Package and Deploy Gradio App
 
 on:
   push:
+    paths: ['gradio/app/**']
     branches: ['**', '!main']
 
 env:
