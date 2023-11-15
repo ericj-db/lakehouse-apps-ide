@@ -9,6 +9,7 @@ parser.add_argument('--pat', help='Personal Access Token to use for deployment',
 # Can possibly get this directly from github workflow
 parser.add_argument('--access_key', help='Github access key to pass to Harbor', default='ericj-db')
 parser.add_argument('--access_secret', help='Github access secret to pass to Harbor', default='')
+parser.add_argument('--app_name', help='Name of app to deploy', default='')
 
 args = parser.parse_args()
 
@@ -29,14 +30,16 @@ if args.access_secret == '':
 else:
     print('Access secret provided, continuing...')
 
+if args.app_name == '':
+    print('App name cannot be empty')
+    exit(1)
 
-app_id = uuid.uuid4().hex[:4]
 url = f'https://{args.host}/api/2.0/preview/apps/deployments'
 headers = {'Authorization': f'Bearer {args.pat}'}
 body = {
   'manifest': {
     'version': '1',
-    'name': f'gradio-app-{app_id}',
+    'name': args.app_name,
     'description': 'Gradio App',
     'ingress': {
       'endpoints': [
@@ -87,4 +90,5 @@ r = requests.post(url=url, headers=headers, json=body)
 print(r.status_code)
 print(r.content)
 print(r.json())
-print(f'App name: {app_id}')
+if 300 > r.status_code >= 200:
+    print(args.app_name + ' successfully deployed')
