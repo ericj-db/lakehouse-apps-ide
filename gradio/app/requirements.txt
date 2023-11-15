@@ -1,3 +1,6 @@
 gradio
-openai
+fastapi
 langchain
+uvicorn
+itsdangerous
+pyjwt
