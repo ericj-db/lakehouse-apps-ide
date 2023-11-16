@@ -111,4 +111,5 @@ jobs:
         env:
           ACCESS_SECRET: ${{ secrets.ACCESS_SECRET }}
           DATABRICKS_PAT: ${{ secrets.DATABRICKS_PAT }}
-        run: python deploy_gradio.py --access_secret "$ACCESS_SECRET" --pat "$DATABRICKS_PAT" --app_name ${GITHUB_REF##*/}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python deploy_gradio.py --access_secret "$ACCESS_SECRET" --pat "$DATABRICKS_PAT" --app_name ${GITHUB_REF##*/} --openai_api_key "$OPENAI_API_KEY"
