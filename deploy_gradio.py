@@ -10,6 +10,7 @@ parser.add_argument('--pat', help='Personal Access Token to use for deployment',
 parser.add_argument('--access_key', help='Github access key to pass to Harbor', default='ericj-db')
 parser.add_argument('--access_secret', help='Github access secret to pass to Harbor', default='')
 parser.add_argument('--app_name', help='Name of app to deploy', default='')
+parser.add_argument('--openai_api_key', default='')
 
 args = parser.parse_args()
 
@@ -72,8 +73,12 @@ body = {
               ],
               'env': [
                 {
-                  'name': "GRADIO_SERVER_PORT",
+                  'name': 'GRADIO_SERVER_PORT',
                   'value': 8050
+                },
+                {
+                  'name': 'OPENAI_API_KEY',
+                  'value': args.openai_api_key
                 }
               ]
             }
