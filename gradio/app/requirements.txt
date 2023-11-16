@@ -7,3 +7,5 @@ pyjwt
 dash
 plotly
 pandas
+databricks-sql-connector
+openai
